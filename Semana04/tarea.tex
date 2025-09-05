@@ -1,0 +1,207 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{./assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Cálculo I} \\
+  \vspace{1cm}
+  \large \textbf{Taller 1}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 32384}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Victor Johnny Papuico Bernardo
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\section*{Ejercicio 2}
+Determine el dominio y la regla de correspondencia de las funciones $f - g$ y $\dfrac{f}{g}$
+
+\vspace{-0.5cm}
+
+\begin{center}
+\[
+\begin{array}{c@{\qquad}c}
+  f(x) =
+  \begin{cases}
+    2x + 1, & x \in ]-5,3[ \\
+    -x + 5, & x \in [3,10[
+  \end{cases},  
+  &
+  g(x) =
+  \begin{cases}
+    1-x, & x \in [-10, 4] \\
+    x-8, & x \in ]6, 15[
+\end{cases}
+\end{array}
+\]
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[yscale=1]
+  \fill[gray!30] (-5,0) rectangle (3,0.5);   % overlap ]-5,3[
+  \fill[gray!30] (3,0) rectangle (4,0.5);    % overlap [3,4]
+  \fill[gray!30] (6,0) rectangle (10,0.5);   % overlap ]6,10[
+
+  % Draw the number line
+  \draw[thick] (-11,0) -- (16,0);
+
+  % Tick marks and labels
+  \foreach \x in {-10,-5,3,4,6,10,15}
+    \draw[thick] (\x,0.08) -- (\x,-0.08);
+  \foreach \x in {-10,-5,3,4,6,10,15}
+    \node[below,font=\normalsize] at (\x,-0.08) {\x};
+
+  % f(x) domain: ]-5,3[ and [3,10[
+  \draw[blue,thick] (-5,1) -- (3,1);
+  \draw[blue,thick] (3,1) -- (10,1);
+
+  % Open/closed dots for f(x)
+  \filldraw[white,draw=blue,thick] (-5,1) circle (1.5pt); % open
+  \filldraw[white,draw=blue,thick] (3,1) circle (1.5pt); % open
+  \filldraw[blue] (3,1) circle (1.5pt); % closed
+  \filldraw[white,draw=blue,thick] (10,1) circle (1.5pt); % open
+
+  % g(x) domain: [-10,4] and ]6,15[
+  \draw[red,thick] (-10,0.5) -- (4,0.5);
+  \draw[red,thick] (6,0.5) -- (15,0.5);
+
+  % Open/closed dots for g(x)
+  \filldraw[red] (-10,0.5) circle (1.5pt); % closed
+  \filldraw[red] (4,0.5) circle (1.5pt); % closed
+  \filldraw[white,draw=red,thick] (6,0.5) circle (1.5pt); % open
+  \filldraw[white,draw=red,thick] (15,0.5) circle (1.5pt); % open
+
+  % Legends
+  \node[blue,right,font=\normalsize] at (10.5,1) {$f(x)$};
+  \node[red,right,font=\normalsize] at (15.5,0.5) {$g(x)$};
+\end{tikzpicture}}
+\end{center}
+
+\vspace{-0.5cm}
+
+\[
+\begin{minipage}{0.45\textwidth}
+\[
+\begin{array}{l}
+  \multicolumn{1}{c}{f-g} \\[18pt]
+  x \in ]-5, 3[ \; \Rightarrow \; 2x + 1 - (1 - x) = 3x \\[18pt]
+  x \in [3, 4] \; \Rightarrow \; -x + 5 - 1 + x = 4 \\[18pt]
+  x \in ]6, 10[ \; \Rightarrow \; -x + 5 - (x - 8) = 13 - 2x
+\end{array}
+\]
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\[
+\begin{array}{l}
+  \multicolumn{1}{c}{f / g} \\[18pt]
+  x \in ]-5, 3[ - \{1\}\; = \; \dfrac{2x + 1}{1 - x} \\[18pt]
+  x \in [3, 4]  - \{1\}\; = \; \dfrac{- x + 5}{1 - x} \\[18pt]
+  x \in ]6, 10[ - \{8\}\; = \; \dfrac{- x + 5}{x - 8}
+\end{array}
+\]
+\end{minipage}
+\]
+
+
+
+
+\vspace{1cm}
+
+
+
+\section*{Ejercicio 3}
+Grafique la siguiente función $f(x) = -10 \cos\left(\dfrac{\pi}{6}x\right) + 4$, para un solo periodo.
+
+\[
+\begin{array}{c c c c c c}
+  \left|a\right| = -10 \quad & w = \dfrac{\pi}{6} \quad & \O = 0 \quad & T = \dfrac{2\pi}{w} = 12 \quad & s = 3 \quad & b = 4
+\end{array}
+\]
+
+\[
+\begin{minipage}{0.3\textwidth}
+\[
+\begin{array}{c|c}
+  0  & -6 \\ \hline
+  3  & -4 \\ \hline
+  6  & -6 \\ \hline
+  9  & -4 \\ \hline
+  12 & -6
+\end{array}
+\]
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+\begin{tikzpicture}
+  \begin{axis}[
+      axis lines=middle,
+      xlabel={$x$},
+      ylabel={$f(x)$},
+      xtick={0,3,6,9,12},
+      ytick={-6,-4,-2,0,2,4,6,8,10,12,14},
+      ymin=-8, ymax=16,
+      xmin=-1, xmax=13,
+      grid=both,
+      width=10cm,
+      height=8cm,
+      domain=0:12,
+      samples=100,
+    ]
+    \addplot[blue, thick] {-10*cos(deg((pi/6)*x)) + 4};
+
+    \addplot[blue, only marks, mark=*] coordinates {
+      (0,-6)
+      (3,4)
+      (6,14)
+      (9,4)
+      (12,-6)
+    };
+  \end{axis}
+\end{tikzpicture}
+\end{minipage}
+\]
+
+
+\end{document}
